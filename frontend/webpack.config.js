@@ -36,9 +36,13 @@ module.exports = {
                 test: /\.(sass|scss)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
+            // {
+            //     test: /\.(png|svg|jpg|jpeg|gif|ico|json)$/,
+            //     use: ['file-loader']
+            // },
             {
-                test: /\.(png|svg|jpg|jpeg|gif|ico|json)$/,
-                use: ['file-loader']
+                test: /\.(png|jpe?g|gif|svg)$/,
+                type: 'asset/resource'
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -51,13 +55,11 @@ module.exports = {
             name: 'host',
             filename: 'remoteEntry.js',
             remotes: {
-                host: 'host@http://localhost:3000/remoteEntry.js',
-                authMicro: 'authMicro@http://localhost:3001/remoteEntry.js'
+                authMicro: 'authMicro@http://localhost:3001/remoteEntry.js',
+                cardMicro: 'cardMicro@http://localhost:3002/remoteEntry.js',
+                profileMicro: 'profileMicro@http://localhost:3003/remoteEntry.js'
             },
-            exposes: {
-                './App': './src/components/App'
-            },
-            shared: ['react', 'react-dom']
+            shared: { react: { singleton: true }, "react-dom": { singleton: true }, "react-router-dom": { singleton: true } },
         }),
         new HtmlWebpackPlugin({
             template: './public/index.html'

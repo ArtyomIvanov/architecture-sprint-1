@@ -3,24 +3,22 @@ import { Route, useHistory, Switch } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import PopupWithForm from "./PopupWithForm";
-import ImagePopup from "./ImagePopup";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
-import AddPlacePopup from "./AddPlacePopup";
-import Register from "../../auth-microfrontend/src/components/Register";
-import Login from "../../auth-microfrontend/src/components/Login";
+
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
 import * as auth from "../utils/auth.js";
 
-// const Login = React.lazy(() => import('authMicro/Login').catch());
-// const auth = React.lazy(() => import('authMicro/auth').catch());
-// const Register = React.lazy(() => import('authMicro/Register').catch());
-// const OrderService = React.lazy(() => import('order/OrderService'));
-// const ProfilePage = React.lazy(() => import('profile/ProfilePage'));
+import Login from "authMicro/Login";
+import Register from "authMicro/Register";
+
+import AddPlacePopup from "cardMicro/AddPlacePopup";
+import PopupWithForm from "cardMicro/PopupWithForm";
+import ImagePopup from "cardMicro/ImagePopup";
+
+import EditProfilePopup from "profileMicro/EditProfilePopup";
+import EditAvatarPopup from "profileMicro/EditAvatarPopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =

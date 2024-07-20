@@ -46,19 +46,14 @@ module.exports = {
         new ModuleFederationPlugin({
             name: 'authMicro',
             filename: 'remoteEntry.js',
-            // remotes: {
-            //     host: 'host@http://localhost:3000/remoteEntry.js'
-                // auth: 'auth@http://localhost:3001/remoteEntry.js'
-            // },
             exposes: {
                 './Register': './src/components/Register',
-                './Login': './src/components/Login',
-                './auth': './src/utils/auth'
+                './Login': './src/components/Login'
             },
-            shared: ['react', 'react-dom']
+            shared: { react: { singleton: true }, "react-dom": { singleton: true }, "react-router-dom": { singleton: true } },
         }),
         new HtmlWebpackPlugin({
-            template: './public/index.html'
-        })
+            template: './public/index.html',
+        }),
     ]
 };

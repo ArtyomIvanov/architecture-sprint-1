@@ -17,13 +17,12 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "start:host": "webpack serve",
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "test:microfrontend": "npx jest ./index.spec.js",
     "eject": "react-scripts eject",
-    "start1": "webpack-cli serve --mode development",
-    "start2": "webpack serve --open",
     "buildWeb": "webpack --mode production",
     "buildWebDevelopment": "webpack --mode development",
     "serve": "serve dist -p 3000",

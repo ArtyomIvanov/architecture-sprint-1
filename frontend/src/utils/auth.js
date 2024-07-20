@@ -1,7 +1,9 @@
 const BASE_URL = 'https://auth.nomoreparties.co';
 
 const getResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
+  return res.ok
+  // Авторизация через $BASE_URL отбивается бед реквестом на все запросы...
+  // return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 }
 
 export const register = (email, password) => {
