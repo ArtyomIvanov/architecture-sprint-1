@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
-const deps = require('./package.json').dependencies;
 
 module.exports = {
     entry: './src/index.js',
@@ -36,10 +36,6 @@ module.exports = {
                 test: /\.(sass|scss)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
-            // {
-            //     test: /\.(png|svg|jpg|jpeg|gif|ico|json)$/,
-            //     use: ['file-loader']
-            // },
             {
                 test: /\.(png|jpe?g|gif|svg)$/,
                 type: 'asset/resource'
@@ -63,6 +59,22 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './public/index.html'
-        })
+        }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: "src/**/*.jpg",
+                    to: "[name][ext]",
+                },
+                {
+                    from: "public/**/*.png",
+                    to: "[name][ext]",
+                },
+                {
+                    from: "public/manifest.json",
+                    to: "[name][ext]",
+                },
+            ],
+        }),
     ]
 };
